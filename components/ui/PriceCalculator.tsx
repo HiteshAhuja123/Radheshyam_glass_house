@@ -12,10 +12,14 @@ export default function PriceCalculator({ baseRate = BASE_RATE_PER_SQFT, customi
   const [width, setWidth] = useState("");
 
   const sqft = parseFloat(height) * parseFloat(width);
-  const isValid = sqft > 0;
+  const isValid = sqft > 0 && !isNaN(sqft);
   const minPrice = isValid ? Math.round(sqft * baseRate) : null;
   const maxPrice = isValid ? Math.round(sqft * baseRate * 1.3) : null;
-  const waMessage = `Hi! I'd like a quote for a ${height}ft x ${width}ft mirror/glass installation (approx. ${sqft.toFixed(1)} sq.ft.).`;
+
+  // ✅ Moved inside isValid check — only built when needed
+  const waMessage = isValid
+    ? `Hi! I'd like a quote for a ${height}ft x ${width}ft mirror/glass installation (approx. ${sqft.toFixed(1)} sq.ft.).`
+    : "";
 
   return (
     <div className="bg-white/5 border border-gold/25 rounded p-7 max-w-xl">
@@ -35,20 +39,29 @@ export default function PriceCalculator({ baseRate = BASE_RATE_PER_SQFT, customi
         <div>
           <p className="font-body text-[10px] tracking-widest uppercase text-white/50 mb-1">Estimated cost</p>
           <p className="text-gold text-2xl font-medium">
-            {isValid ? `Rs.${minPrice!.toLocaleString("en-IN")} - Rs.${maxPrice!.toLocaleString("en-IN")}` : "Enter dimensions above"}
+            {isValid
+              ? `Rs.${minPrice!.toLocaleString("en-IN")} - Rs.${maxPrice!.toLocaleString("en-IN")}`
+              : "Enter dimensions above"}
           </p>
         </div>
         <div className="text-right">
           <p className="font-body text-[10px] tracking-widest uppercase text-white/30">Base rate</p>
-          <p className="text-white/50 text-sm mt-0.5">Rs.{baseRate.toLocaleString("en-IN")} / sq. ft.</p>
+          {/* ✅ Safe null check on baseRate */}
+          <p className="text-white/50 text-sm mt-0.5">Rs.{baseRate?.toLocaleString("en-IN") ?? "N/A"} / sq. ft.</p>
         </div>
       </div>
-      {customizationNote && <p className="font-body text-xs text-white/35 mt-3">{customizationNote}</p>}
-      <p className="font-body text-xs text-white/30 mt-2">* Custom finishes, coloured glass and LED integration — contact for exact quote</p>
+      {customizationNote && (
+        <p className="font-body text-xs text-white/35 mt-3">{customizationNote}</p>
+      )}
+      <p className="font-body text-xs text-white/30 mt-2">
+        * Custom finishes, coloured glass and LED integration — contact for exact quote
+      </p>
       {isValid && (
-        <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`}
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`}
           target="_blank" rel="noopener noreferrer"
-          className="mt-5 inline-block bg-gold text-charcoal font-body text-[11px] font-medium tracking-widest uppercase px-6 py-3 rounded-sm hover:bg-gold-light transition-colors">
+          className="mt-5 inline-block bg-gold text-charcoal font-body text-[11px] font-medium tracking-widest uppercase px-6 py-3 rounded-sm hover:bg-gold-light transition-colors"
+        >
           Get Custom Quote on WhatsApp
         </a>
       )}
