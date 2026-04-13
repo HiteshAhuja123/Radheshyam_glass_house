@@ -1,5 +1,6 @@
 import { getAllProducts } from "@/sanity/queries/products";
 import SanityImage from "@/components/ui/SanityImage";
+import PriceCalculator from "@/components/ui/PriceCalculator";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -45,8 +46,14 @@ export default async function CollectionsPage() {
               </div>
               <div className="p-5">
                 <h3 className="font-sans text-xl text-charcoal mb-1">{p.name}</h3>
-                <p className="font-body text-xs text-charcoal/55 leading-relaxed">{p.shortDescription}</p>
-                <p className="font-body text-[10px] tracking-widest uppercase text-gold mt-3">Enquire →</p>
+                <p className="font-body text-xs text-charcoal/55 leading-relaxed mb-4">{p.shortDescription}</p>
+                <div className="mb-4">
+                  <PriceCalculator
+                    baseRate={p.baseRatePerSqFt}
+                    customizationNote={p.customizationNote}
+                  />
+                </div>
+                <p className="font-body text-[10px] tracking-widest uppercase text-gold">Enquire →</p>
               </div>
             </Link>
           ))}

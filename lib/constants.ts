@@ -1,8 +1,14 @@
-export const WHATSAPP_NUMBER = "919XXXXXXXXX";
-export const CONTACT_PHONE = "+91 9X-XXXX-XXXX";
+export const WHATSAPP_NUMBER = "917385908485";
+export const CONTACT_PHONE = "+91 73859-08485";
 export const CONTACT_EMAIL = "info@radheshyamglass.com";
 export const INSTAGRAM_URL = "https://www.instagram.com/radheshyamglasshouse";
-export const GOOGLE_MAPS_URL = "https://maps.google.com/?q=Radheshyam+Glass+House+Ambarnath";
+export const GOOGLE_MAPS_URL = "https://maps.google.com/?q=Radheshyam+Glass+House+Ulhasnagar";
 export const BASE_RATE_PER_SQFT = 6000;
 export const BUSINESS_NAME = "Radheshyam Glass House";
-export const TAGLINE = "45 Years of Artisan Glass Excellence";
+export const TAGLINE = "31 Years of Artisan Glass Excellence";
+export const OWNERS = "Rajesh Gurnani & Kirti Gurnani";
+export const ESTABLISHED = 1995;
+export const PROJECTS_DELIVERED = "10 lakh+";
+export const WORKSHOP_ADDRESS = "Near New Gurudwara, Behind E.I.E.S Hospital, Kamgar Road, Ulhasnagar 3";
+export const SHOWROOM_ADDRESS = "Shop No 7, Below Sai Basharam Apt, Press Bazar, Ulhasnagar 2";
+export const TIMINGS = "11 AM to 8 PM, Tuesday to Sunday (Monday Off)";

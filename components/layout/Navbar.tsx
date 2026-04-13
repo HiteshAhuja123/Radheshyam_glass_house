@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { BUSINESS_NAME, WHATSAPP_NUMBER } from "@/lib/constants";
+import { BUSINESS_NAME, WHATSAPP_NUMBER, ESTABLISHED } from "@/lib/constants";
 
 const navLinks = [
   { href: "/collections", label: "Collections" },
@@ -19,13 +19,16 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-charcoal border-b border-gold/20">
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex flex-col gap-0.5">
-          <span className="font-sans text-gold text-[15px] tracking-[0.12em] uppercase">
-            {BUSINESS_NAME}
-          </span>
-          <span className="font-body text-[9px] text-gold/60 tracking-[0.18em] uppercase">
-            Est. 1979 · Ambarnath
-          </span>
+        <Link href="/" className="flex items-center gap-3">
+          <img src="/logo.png" alt="Radheshyam Glass House Logo" className="h-10 w-auto" />
+          <div className="flex flex-col gap-0.5">
+            <span className="font-sans text-gold text-[15px] tracking-[0.12em] uppercase">
+              {BUSINESS_NAME}
+            </span>
+            <span className="font-body text-[9px] text-gold/60 tracking-[0.18em] uppercase">
+              Est. {ESTABLISHED} · Ulhasnagar
+            </span>
+          </div>
         </Link>
 
         {/* Desktop links */}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BUSINESS_NAME, CONTACT_PHONE, CONTACT_EMAIL, INSTAGRAM_URL, GOOGLE_MAPS_URL, WHATSAPP_NUMBER } from "@/lib/constants";
+import { BUSINESS_NAME, CONTACT_PHONE, CONTACT_EMAIL, INSTAGRAM_URL, GOOGLE_MAPS_URL, WHATSAPP_NUMBER, TIMINGS } from "@/lib/constants";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -32,6 +32,7 @@ export default function Footer() {
             <li><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold transition-colors">{CONTACT_EMAIL}</a></li>
             <li><a href={waUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">WhatsApp</a></li>
             <li><a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Find us on Maps</a></li>
+            <li className="text-white/70">{TIMINGS}</li>
           </ul>
         </div>
         {/* Social */}
