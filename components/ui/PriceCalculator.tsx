@@ -30,7 +30,7 @@ export default function PriceCalculator({ baseRate = BASE_RATE_PER_SQFT, customi
             <input
               type="number" min={0.5} step={0.5} value={value}
               onChange={(e) => setter(e.target.value)} placeholder="e.g. 4"
-              className="bg-white/[0.06] border border-gold/30 text-white px-3.5 py-2.5 rounded-sm text-base outline-none focus:border-gold transition-colors"
+              className="bg-white/[0.06] border border-gold/30 text-black px-3.5 py-2.5 rounded-sm text-base outline-none focus:border-gold transition-colors"
             />
           </div>
         ))}

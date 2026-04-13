@@ -19,7 +19,7 @@ export default function ContactPage() {
             {[
               ["Phone", <a href={`tel:${CONTACT_PHONE}`} className="hover:text-gold transition-colors">{CONTACT_PHONE}</a>],
               ["Email", <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold transition-colors">{CONTACT_EMAIL}</a>],
-              ["Location", <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Ambarnath, Maharashtra</a>],
+              ["Location", <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Ulhasnagar, Maharashtra</a>],
               ["Instagram", <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">@radheshyamglasshouse</a>],
             ].map(([label, value]) => (
               <div key={String(label)}>

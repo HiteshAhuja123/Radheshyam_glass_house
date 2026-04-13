@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s | ${BUSINESS_NAME}`,
   },
   description: `${TAGLINE}. Premium designer mirrors, glass partitions, and bespoke glass installations for homes, offices, hotels and resorts.`,
-  keywords: ["designer mirrors", "glass partitions", "LED mirrors", "luxury mirrors", "glass house", "Ambarnath", "Mumbai"],
+  keywords: ["designer mirrors", "glass partitions", "LED mirrors", "luxury mirrors", "glass house", "Ulhasnagar", "Mumbai"],
   openGraph: {
     siteName: BUSINESS_NAME,
     type: "website",
