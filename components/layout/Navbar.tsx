@@ -19,13 +19,13 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-charcoal border-b border-gold/20">
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <img src="/logo.png" alt="Radheshyam Glass House Logo" className="h-10 w-auto" />
+        <Link href="/" className="flex items-center gap-4">
+          <img src="/logo.jpg" alt="Radheshyam Glass House Logo" className="h-16 w-auto max-w-[72px] object-contain" />
           <div className="flex flex-col gap-0.5">
-            <span className="font-sans text-gold text-[15px] tracking-[0.12em] uppercase">
+            <span className="font-sans text-gold text-lg tracking-[0.14em] uppercase">
               {BUSINESS_NAME}
             </span>
-            <span className="font-body text-[9px] text-gold/60 tracking-[0.18em] uppercase">
+            <span className="font-body text-[10px] text-gold/70 tracking-[0.18em] uppercase">
               Est. {ESTABLISHED} · Ulhasnagar
             </span>
           </div>
