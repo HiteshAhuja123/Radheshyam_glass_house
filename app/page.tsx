@@ -57,7 +57,7 @@ export default async function HomePage() {
       {/* ── LEGACY STRIP ── */}
       <div className="bg-gold py-5 px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-charcoal">
-          {[["31+", "Years of legacy"], ["3rd", "Generation craftsmanship"], ["5000+", "Projects delivered"], ["100%", "Custom made"]].map(([num, label]) => (
+          {[["31+", "Years of legacy"], ["3rd", "Generation craftsmanship"], ["50000+", "Projects delivered"], ["100%", "Custom made"]].map(([num, label]) => (
             <div key={label} className="text-center">
               <p className="font-sans text-3xl font-medium">{num}</p>
               <p className="font-body text-[10px] tracking-widest uppercase opacity-70 mt-0.5">{label}</p>
