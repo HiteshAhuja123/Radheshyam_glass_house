@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Collections" };
-export const revalidate = 3600;
+export const revalidate = 0;
 
 const CATEGORIES = [
   { value: "all", label: "All Collections" },
