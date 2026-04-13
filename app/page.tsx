@@ -32,7 +32,7 @@ export default async function HomePage() {
         </div>
         <div className="relative z-10 text-center px-6 max-w-3xl">
           <p className="font-body text-[10px] tracking-[0.22em] uppercase text-gold mb-5">
-            45 Years of Artisan Glass Excellence
+            31 Years of Artisan Glass Excellence
           </p>
           <h1 className="font-sans text-white text-5xl md:text-6xl leading-[1.15] font-light mb-5">
             Where Reflection<br />Becomes{" "}
@@ -57,7 +57,7 @@ export default async function HomePage() {
       {/* ── LEGACY STRIP ── */}
       <div className="bg-gold py-5 px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-charcoal">
-          {[["45+", "Years of legacy"], ["3rd", "Generation craftsmanship"], ["500+", "Projects delivered"], ["100%", "Custom made"]].map(([num, label]) => (
+          {[["31+", "Years of legacy"], ["3rd", "Generation craftsmanship"], ["5000+", "Projects delivered"], ["100%", "Custom made"]].map(([num, label]) => (
             <div key={label} className="text-center">
               <p className="font-sans text-3xl font-medium">{num}</p>
               <p className="font-body text-[10px] tracking-widest uppercase opacity-70 mt-0.5">{label}</p>

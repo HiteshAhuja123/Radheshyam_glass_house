@@ -3,7 +3,7 @@ export const CONTACT_PHONE = "+91 73859-08485";
 export const CONTACT_EMAIL = "info@radheshyamglass.com";
 export const INSTAGRAM_URL = "https://www.instagram.com/radheshyamglasshouse";
 export const GOOGLE_MAPS_URL = "https://maps.google.com/?q=Radheshyam+Glass+House+Ulhasnagar";
-export const BASE_RATE_PER_SQFT = 6000;
+export const BASE_RATE_PER_SQFT = 600;
 export const BUSINESS_NAME = "Radheshyam Glass House";
 export const TAGLINE = "31 Years of Artisan Glass Excellence";
 export const OWNERS = "Rajesh Gurnani & Kirti Gurnani";
