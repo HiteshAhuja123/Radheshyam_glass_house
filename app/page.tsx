@@ -13,7 +13,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   bespoke: "Bespoke Installations",
 };
 
-export const revalidate = 3600; // ISR — revalidate every hour
+export const revalidate = 60; // ISR — revalidate every hour
 
 export default async function HomePage() {
   const [products, galleryItems] = await Promise.all([
