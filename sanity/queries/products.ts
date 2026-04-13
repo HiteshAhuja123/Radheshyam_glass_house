@@ -6,8 +6,8 @@ export type Product = {
   slug: { current: string };
   category: string;
   shortDescription: string;
-  mainImage: { asset: { _ref: string }; alt: string };
-  gallery?: { asset: { _ref: string }; alt: string }[];
+  mainImage: { asset: { _ref: string; url: string }; alt: string };  // add url
+  gallery?: { asset: { _ref: string; url: string }; alt: string }[];
   isFeatured: boolean;
   baseRatePerSqFt?: number;
   customizationNote?: string;
@@ -16,7 +16,9 @@ export type Product = {
 export async function getAllProducts(): Promise<Product[]> {
   return client.fetch(
     `*[_type == "product"] | order(order asc) {
-      _id, name, slug, category, shortDescription, mainImage, isFeatured, baseRatePerSqFt, customizationNote
+      _id, name, slug, category, shortDescription,
+      mainImage { alt, asset->{ _id, url } },   // 👈 asset->
+      isFeatured, baseRatePerSqFt, customizationNote
     }`
   );
 }
@@ -24,7 +26,9 @@ export async function getAllProducts(): Promise<Product[]> {
 export async function getFeaturedProducts(): Promise<Product[]> {
   return client.fetch(
     `*[_type == "product" && isFeatured == true] | order(order asc)[0...4] {
-      _id, name, slug, category, shortDescription, mainImage, baseRatePerSqFt
+      _id, name, slug, category, shortDescription,
+      mainImage { alt, asset->{ _id, url } },   // 👈 asset->
+      baseRatePerSqFt
     }`
   );
 }
@@ -32,7 +36,10 @@ export async function getFeaturedProducts(): Promise<Product[]> {
 export async function getProductBySlug(slug: string): Promise<Product> {
   return client.fetch(
     `*[_type == "product" && slug.current == $slug][0] {
-      _id, name, slug, category, shortDescription, description, mainImage, gallery, baseRatePerSqFt, customizationNote
+      _id, name, slug, category, shortDescription, description,
+      mainImage { alt, asset->{ _id, url } },          // 👈 asset->
+      gallery[]{ alt, asset->{ _id, url } },           // 👈 asset->
+      baseRatePerSqFt, customizationNote
     }`,
     { slug }
   );
@@ -41,7 +48,9 @@ export async function getProductBySlug(slug: string): Promise<Product> {
 export async function getProductsByCategory(category: string): Promise<Product[]> {
   return client.fetch(
     `*[_type == "product" && category == $category] | order(order asc) {
-      _id, name, slug, category, shortDescription, mainImage, baseRatePerSqFt
+      _id, name, slug, category, shortDescription,
+      mainImage { alt, asset->{ _id, url } },   // 👈 asset->
+      baseRatePerSqFt
     }`,
     { category }
   );
