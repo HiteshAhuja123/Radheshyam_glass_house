@@ -26,34 +26,34 @@ export default function PriceCalculator({ baseRate = BASE_RATE_PER_SQFT, customi
       <div className="grid grid-cols-2 gap-4 mb-5">
         {([["Height (feet)", height, setHeight], ["Width (feet)", width, setWidth]] as const).map(([label, value, setter]) => (
           <div key={label} className="flex flex-col gap-1.5">
-            <label className="font-body text-[10px] tracking-widest uppercase text-white/50">{label}</label>
+            <label className="font-body text-[10px] tracking-widest uppercase text-charcoal">{label}</label>
             <input
               type="number" min={0.5} step={0.5} value={value}
               onChange={(e) => setter(e.target.value)} placeholder={label.replace(/\s*\(feet\)/i, "")}
-              className="bg-white/[0.08] border border-gold/30 text-white placeholder-white/30 px-3.5 py-2.5 rounded-sm text-base outline-none focus:border-gold transition-colors"
+              className="bg-charcoal/40 border border-gold/30 text-white placeholder-white/60 px-3.5 py-2.5 rounded-sm text-base outline-none focus:border-gold transition-colors"
             />
           </div>
         ))}
       </div>
       <div className="bg-gold/10 border border-gold/30 rounded px-5 py-4 flex justify-between items-center">
         <div>
-          <p className="font-body text-[10px] tracking-widest uppercase text-white/50 mb-1">Estimated cost</p>
-          <p className="text-gold text-2xl font-medium">
+          <p className="font-body text-[10px] tracking-widest uppercase text-charcoal/60 mb-1">Estimated cost</p>
+          <p className="text-charcoal text-2xl font-medium">
             {isValid
-              ? `Rs.${minPrice!.toLocaleString("en-IN")} - Rs.${maxPrice!.toLocaleString("en-IN")}`
+              ? `₹${minPrice!.toLocaleString("en-IN")} - ₹${maxPrice!.toLocaleString("en-IN")}`
               : "Enter dimensions above"}
           </p>
         </div>
         <div className="text-right">
-          <p className="font-body text-[10px] tracking-widest uppercase text-white/30">Base rate</p>
+          <p className="font-body text-[10px] tracking-widest uppercase text-charcoal/50">Base rate</p>
           {/* ✅ Safe null check on baseRate */}
-          <p className="text-white/50 text-sm mt-0.5">Rs.{baseRate?.toLocaleString("en-IN") ?? "N/A"} / sq. ft.</p>
+          <p className="text-charcoal font-medium text-sm mt-0.5">₹{baseRate?.toLocaleString("en-IN") ?? "N/A"} / sq. ft.</p>
         </div>
       </div>
       {customizationNote && (
-        <p className="font-body text-xs text-white/35 mt-3">{customizationNote}</p>
+        <p className="font-body text-xs text-charcoal/70 mt-3">{customizationNote}</p>
       )}
-      <p className="font-body text-xs text-white/30 mt-2">
+      <p className="font-body text-xs text-charcoal/60 mt-2">
         * Custom finishes, coloured glass and LED integration — contact for exact quote
       </p>
       {isValid && (

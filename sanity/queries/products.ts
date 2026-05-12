@@ -35,7 +35,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
 
 export async function getProductBySlug(slug: string): Promise<Product> {
   return client.fetch(
-    `*[_type == "product" && slug.current == $slug][0] {
+    `*[_type == "product" && lower(slug.current) == lower($slug)][0] {
       _id, name, slug, category, shortDescription, description,
       mainImage { alt, asset->{ _id, url } },          // 👈 asset->
       gallery[]{ alt, asset->{ _id, url } },           // 👈 asset->

@@ -18,7 +18,8 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const product = await getProductBySlug(params.slug);
+  const normalizedSlug = params.slug.replace(/\s+/g, "-").toLowerCase();
+  const product = await getProductBySlug(normalizedSlug);
   if (!product) return {};
   return {
     title: product.name,
@@ -31,7 +32,8 @@ export default async function ProductPage({
 }: {
   params: { slug: string };
 }) {
-  const product = await getProductBySlug(params.slug);
+  const normalizedSlug = params.slug.replace(/\s+/g, "-").toLowerCase();
+  const product = await getProductBySlug(normalizedSlug);
   if (!product) notFound();
 
   // Guard: mainImage must exist before rendering
