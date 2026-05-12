@@ -15,6 +15,7 @@ export const product = defineType({
           { title: "Designer Mirrors", value: "designer" },
           { title: "Glass Partitions", value: "partition" },
           { title: "Bespoke Installations", value: "bespoke" },
+          { title: "Name Plates", value: "nameplate" },
         ],
         layout: "radio",
       },

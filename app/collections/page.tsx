@@ -13,6 +13,7 @@ const CATEGORIES = [
   { value: "designer", label: "Designer Mirrors" },
   { value: "partition", label: "Glass Partitions" },
   { value: "bespoke", label: "Bespoke Installations" },
+  { value: "nameplate", label: "Name Plates" },
 ];
 
 export default async function CollectionsPage() {

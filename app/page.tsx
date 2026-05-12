@@ -12,6 +12,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   designer: "Designer Mirrors",
   partition: "Glass Partitions",
   bespoke: "Bespoke Installations",
+  nameplate: "Name Plates",
 };
 
 export const revalidate = 60;
