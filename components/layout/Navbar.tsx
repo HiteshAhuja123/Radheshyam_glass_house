@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BUSINESS_NAME, WHATSAPP_NUMBER, ESTABLISHED } from "@/lib/constants";
 
@@ -13,14 +14,19 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I'd like to know more about your glass and mirror collections.")}`;
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50 bg-charcoal border-b border-gold/20">
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex min-w-0 items-center gap-4">
-          <img src="/logo.jpg" alt="Radheshyam Glass House Logo" className="h-16 w-auto max-w-[84px] rounded-2xl object-contain" />
+          <img src="/logo.jpg" alt="Radheshyam Glass House Logo"
+            className="h-16 w-auto max-w-[84px] rounded-2xl object-contain" />
           <div className="flex min-w-0 flex-col gap-0.5">
             <span className="whitespace-normal break-words font-sans text-gold text-lg tracking-[0.14em] uppercase md:text-xl">
               {BUSINESS_NAME}
@@ -35,7 +41,11 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href}
-              className="font-body text-[11px] tracking-[0.14em] uppercase text-white/60 hover:text-gold transition-colors">
+              className={`font-body text-[11px] tracking-[0.14em] uppercase transition-colors relative ${
+                isActive(l.href)
+                  ? "text-gold after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-px after:bg-gold"
+                  : "text-white/60 hover:text-gold"
+              }`}>
               {l.label}
             </Link>
           ))}
@@ -50,21 +60,23 @@ export default function Navbar() {
         </div>
 
         {/* Mobile hamburger */}
-        <button className="md:hidden text-white/70" onClick={() => setOpen(!open)} aria-label="Menu">
+        <button className="md:hidden text-white/70 p-1" onClick={() => setOpen(!open)} aria-label="Toggle menu">
           <div className="w-5 flex flex-col gap-1.5">
-            <span className={`block h-px bg-current transition-all ${open ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block h-px bg-current transition-all ${open ? "opacity-0" : ""}`} />
-            <span className={`block h-px bg-current transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+            <span className={`block h-px bg-current transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block h-px bg-current transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-px bg-current transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
           </div>
         </button>
       </nav>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-charcoal border-t border-gold/10 px-6 py-5 flex flex-col gap-4">
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className="bg-charcoal border-t border-gold/10 px-6 py-5 flex flex-col gap-4">
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="font-body text-sm tracking-widest uppercase text-white/70 hover:text-gold transition-colors">
+              className={`font-body text-sm tracking-widest uppercase transition-colors ${
+                isActive(l.href) ? "text-gold" : "text-white/70 hover:text-gold"
+              }`}>
               {l.label}
             </Link>
           ))}
@@ -73,7 +85,7 @@ export default function Navbar() {
             Enquire Now
           </a>
         </div>
-      )}
+      </div>
     </header>
   );
 }
